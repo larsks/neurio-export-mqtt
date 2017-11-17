@@ -52,6 +52,7 @@ def main():
         sample = nc.get_samples_live_last(args.sensor_id)
         del sample['timestamp']
         sample['sensor_id'] = args.sensor_id
+        sample['sensor_type'] = 'neurio'
         LOG.info('sending sample %s', sample)
         topic = '{}/neurio/{}'.format(args.topic, args.sensor_id)
         msg = json.dumps(sample)
